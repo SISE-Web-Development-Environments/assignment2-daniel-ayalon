@@ -3,19 +3,167 @@
 	<head>
 		<script src="./jquery-3.4.1.slim.min.js"></script>
 		<script type="text/javascript" src="./app.js"></script>
-	</head>
+		<script type="text/javascript" src="./codes.js"></script>
+		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+		<link rel="stylesheet" type="text/css" href="dev.css" />
+		<script> 
+		
+		
+			 $(document).ready(function ()
+   {
 
-	<body>
-		<div id="score">
+      $("#btn").click(function ()
+      {
+         $("#dialog").show();
+      });
+
+      $("#btnClose").click(function ()
+      {
+         $("#dialog").hide();
+      });
+
+$("#loginbtn").click(function (){
+	$(".sc").hide();
+	$("#login").show();
+
+
+});
+$("#definitionbtn").click(function (){
+	$(".sc").hide();
+	$("#definition").show();
+	$("#game").show();
+
+});
+
+
+});
+   
+
+		
+		</script>
+	</head>
+<body> 
+		
+		<div id="menu">		
+			<ul id="ul">
+				<li id="loginbtn"><a href="#login"  style="padding-right: 2cm">Login</a></li>
+				<li id="Aboutbtn"><a href="#dialog"  rel="modal:open" style="padding-right: 2cm" >About</a></li>
+				<li id="definitionbtn"><a href="#definition"  style="padding-right: 2cm" >Definitions </a></li>
+				</ul>
+			</div>
+		
+		<!-- score -->
+		<div id="score" style= "display: block;">
 			<label for="lblScore">SCORE:</label>
 			<input id="lblScore" type="text" />
 		</div>
-		<div id="time">
+		<!-- time -->
+		<div id="time" style= "display: block;">
 			<label for="lblTime">TIME:</label>
 			<input id="lblTime" type="text" />
 		</div>
-		<div id="game">
-			<canvas id="canvas" height="600" width="600"></canvas>
-		</div>
+		<!-- game -->
+		<div id="game" style= "display: block;">
+		<canvas id="canvas" height="600" width="600"></canvas>
+		<img id="ghost1" src="ghost.gif" alt="Ghost" style="display: none;">
+		<img id="ghost2" src="ghost2.gif" alt="Ghost" style="display: none;">
+		<img id="ghost3" src="ghost3.gif" alt="Ghost" style="display: none;">
+		<img id="ghost4" src="ghost4.gif" alt="Ghost" style="display: none;">
+	</div>
+		
+
+
+		<div id="definition" class="sc" style= "display: none;">
+			please choose buttons to play with<br>
+			<!-- up -->
+			<label for="up">up</label>
+			<input type="text" size="1"  onkeydown="moveup(event)"><Br>
+			
+			<!-- <label for="insertToUp"></label>
+			<output id="insertToUp"></output> -->
+			<!-- down -->
+			<label for="down">down</label>
+			<input type="text" size="1"  onkeydown="movedown(event)"><Br>
+				<!--left  -->
+				<label for="down">left</label>
+				<input type="text" size="1"  onkeydown="moveright(event)"><Br>
+				<!--right  -->
+				<label for="down">right</label>
+				<input type="text" size="1"  onkeydown="moveleft(event)"><Br>
+			
+			
+			
+				<!-- numberofballs -->
+				
+			<label for="numberofballs">choose number of balls(between 50 to 90):</label>
+			<input type="number" id="numberofballs" name="numberofballs"  min="50" max="90"  >	  		
+			<!-- oninput="insertballs.value=numberofballs.value" -->
+			<!-- <input type="submit" onclick="numberBalls()"> -->
+			<button type="button" id="buttonofnumbers"  onclick="numberBalls()" >choose</button>
+			<!-- <label for="numberofballs" >number of balls in game</label>
+			<button id="numberofballs" onclick="numberBalls()">choose</button> -->
+			<label for="insertballs"></label>
+			<output id="insertballs"></output><Br> 
+				<!--colors  -->
+			<label for="favcolor1">choose color to to the first ball 5 points</label>
+			<input type="color" id="favcolor1" ><Br>		
+			<label for="favcolor2">choose color to to the second ball 15 points</label>
+			<input type="color" id="favcolor2" ><Br>
+			<label for="favcolor3">choose color to to the second ball 25 points</label>
+			<input type="color" id="favcolor3" ><br>
+			
+			<!-- time of game -->
+			
+			<label for="TimeOfGame">please choose time of game(min 60 seconds)</label>
+			<input type="number" size="5" id="TimeOfGame" name="quantity" min="60">
+			<button onclick="timedefintion()">choose</button><br>
+			<!-- <output id="timegame"></output><Br> -->		
+				
+				<!-- monsters -->	
+				<label for="monsters">number of monsters(between 1 to 4)</label>
+				<input type="number" id="monsters" name="quantity" min="1" max="4">
+				<button onclick="numberofMonsters()">choose</button><br>
+			<!-- <output id="numberofMonsters"></output><Br> -->
+		
+				<!-- random -->
+				<button id="randomchoises" onclick="randomDefinion()">random choise</button>;
+		
+			</div>
+
+		<div id="login"  class="sc" style= "display: none;">
+		<form method="GET">
+			<label for="Uname">Username</label><br>
+			<input type="text" id="Uname" oninput="findInArray()"   name="user" ><br>
+			<label for="Upassword">password</label><br>
+			<input type="password" id="Upassword" name="userpassword"><br>
+			<input type="button" onclick=" correctDetails()" id="btn1" ><br>
+		</form>
+			
+			<dialog id="note" >
+				<table style="width:100%;border:0px;" cellpadding="3" cellspacing="3">
+					<Tr style="background-color:pink;"><b>Error</b>
+						
+					</Tr>
+					<tr>
+						<td>one of the fields is not correct</td>
+							</tr>
+					<tr>
+						<td><button onclick="func2()"><b>Close</b></td>
+					</tr>
+						</table>
+				</dialog>
+		
+	</div>
+	   
+<br><br>       
+    
+<div id="dialog"  style= "display: none;">
+       <p style="background-color:white" style="text-align:center">About</p><br>
+         <b>Ayalon azlan and Daniel kalbasov<b>     
+</div>
+
+
 	</body>
 </html>
