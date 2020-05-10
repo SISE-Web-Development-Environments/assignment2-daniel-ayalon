@@ -69,19 +69,25 @@ function gotoRegister(){
     
      function correctDetails()
     {   
-    
-    
-        let name=$("#Uname").value;
-        let UserPassword=$("#Upassword").value;
-        if(!findUser(name)){
-            $('#Uname').after('<span class="error">User is not exist.</span>');
+       
+        let name=Uname.value;
+        let UserPassword=Upassword.value;
+        if(!findUser(name) && counter1==0 ){
+            
+            alert("user name not exsit")
+           
         }
-        else{
+        if(findUser(name)){
+            flag=true;
+        }
+         if(flag){
             let userIndex = findUserIndex(name);
-            if(UserPassword!=passwordList[userIndex]){
-                $('#Upassword').after('<span class="error">Wrong password</span>');
+            if(UserPassword!=passwordList[userIndex] &&counter==0){
+                
+                alert("wrong password");
             }
-            else{
+            
+            else if(UserPassword==passwordList[userIndex]){
                 $(".sc").hide();
                 $("#definition").show();
             }
@@ -93,37 +99,6 @@ if(typeof(Storage)!=="undefined"){
 else{
     alert("Sorry,your browser does not in the web storage ")
 }
-// function findInArray()
-// {
-//     let isFound=false;
-//     let tmp=$("#Uname").value;
-//     for(i=0;i<AllUsers.length;i++){
-//         if(tmp==AllUsers[i])
-//             isFound=true;
-//     }
-//     if(isFound==false){
-//         AllUsers.push(tmp);
-//     }
-//         } 
-
-//  function correctDetails()
-// {
-//     let name=$("#Uname").value;
-//     let UserPassword=$("#Upassword").value;
-//     if(sessionStorage.getItem(name).localeCompare(UserPassword)!=0){
-//         document.getElementById("note").showModal();
-//     }
-//    else{
-//                 $(".sc").hide();
-//                 $("#definition").show();
-//    }
-//     }    function func2(){
-//     document.getElementById("note").close();
-
-//     }
-
-
-
 
 //_____________________definition__________________________________________
 

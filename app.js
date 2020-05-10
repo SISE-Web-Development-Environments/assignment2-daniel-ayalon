@@ -5,10 +5,7 @@ var ghost6=new Object();
 var ghost7=new Object();
 var ghost8=new Object();
 var pokemonRandom=new Object();
-//_________________changeeeeeeeeeeeeeeeeeee_________
 var clockshow=new Object();
-//_____________________stopppppppppppppppppppppp________
- 
 var board;
 var score;
 var pac_color;
@@ -69,12 +66,14 @@ var emailList;
 var birthDateList;
 var Firstnames;
 var Lastnames;
-//_________________changeeeeeeeeeeeeeeeeeee_________
-				
+var counter1=0;
+var counter=0;
+var flag=false;
+		
 var counter=0;
 var clockId=40;
 var clockOk=true;
-//_____________________stopppppppppppppppppppppp________
+
  
 
 $(document).ready(function() {
@@ -1128,12 +1127,12 @@ else if(isMonster4==true){
 
 //_______________________________defintionOfOutout_________________________
 function definitionsOutputs(){
-	//_________________changeeeeeeeeeeeeeeeeeee_________
+	
 	activateMonster1=false;
 	activateMonster2=false;
 	activateMonster3=false;
 	activateMonster4=false;	
-	//_____________________stopppppppppppppppppppppp________
+	
 	keyup=insertToUp.value;
 	keydown=insertTodown.value;
 	keyright=insertToRight.value;
